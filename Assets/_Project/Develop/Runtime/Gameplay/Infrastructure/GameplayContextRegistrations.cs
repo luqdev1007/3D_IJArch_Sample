@@ -22,6 +22,7 @@ using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
 using Assets._Project.Develop.Runtime.Gameplay.Features.PauseFeature;
 using Assets._Project.Develop.Runtime.Gameplay.Features.LootFeature;
 using Assets._Project.Develop.Runtime.Configs.Gameplay.Loot;
+using Assets._Project.Develop.Runtime.Gameplay.Features.Camera;
 
 namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 {
@@ -78,6 +79,14 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
             container.RegisterAsSingle(CreateLootFactory);
             container.RegisterAsSingle(CreateDropLootService);
             container.RegisterAsSingle(CreateLootPullingService).NonLazy();
+            
+            // camera
+            container.RegisterAsSingle(CreateCameraService).NonLazy();
+        }
+
+        private static CameraService CreateCameraService(DIContainer c)
+        {
+            return new CameraService(c.Resolve<MainHeroHolderService>(), c.Resolve<ResourcesAssetsLoader>());
         }
 
         private static LootPullingService CreateLootPullingService(DIContainer c)

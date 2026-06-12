@@ -2,6 +2,7 @@
 using Assets._Project.Develop.Runtime.Infrastructure.DI;
 using Assets._Project.Develop.Runtime.Utilities.Reactive;
 using System;
+using UnityEngine;
 
 namespace Assets._Project.Develop.Runtime.Gameplay.Features.MainHero
 {
@@ -33,6 +34,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MainHero
                 _entitiesLifeContext.Added -= OnEntityAdded;
                 _mainHero = entity;
                 _heroRegistred?.Invoke(_mainHero);
+
+                Debug.Log("Hero registred");
             }
         }
 
