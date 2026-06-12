@@ -38,11 +38,11 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.AI
 
             ICompositeCondition fromMovementToCombatStateCondition = new CompositeCondition()
                 .Add(new FuncCondition(() => currentTarget.Value != null))
-                .Add(new FuncCondition(() => _inputService.Direction == Vector3.zero));
+                .Add(new FuncCondition(() => _inputService.MoveDirection == Vector3.zero));
 
             ICompositeCondition fromCombatToMovementStateCondition = new CompositeCondition(LogicOperations.Or)
                 .Add(new FuncCondition(() => currentTarget.Value == null))
-                .Add(new FuncCondition(() => _inputService.Direction != Vector3.zero));
+                .Add(new FuncCondition(() => _inputService.MoveDirection != Vector3.zero));
 
             AIStateMachine behaviour = new AIStateMachine();
 

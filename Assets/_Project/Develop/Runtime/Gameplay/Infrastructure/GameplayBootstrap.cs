@@ -75,9 +75,10 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
         {
             /*
             _brainsContext?.Update(Time.deltaTime);
-            _entitiesLifeContext?.Update(Time.deltaTime);
             _gameplayStatesContext?.Update(Time.deltaTime);
             */
+
+            _entitiesLifeContext?.Update(Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.F))
             {

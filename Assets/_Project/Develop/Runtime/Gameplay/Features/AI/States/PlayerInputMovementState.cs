@@ -23,8 +23,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.AI.States
 
         public void Update(float deltaTime)
         {
-            _movementDirection.Value = _inputService.Direction;
-            _rotationDirection.Value = _inputService.Direction;
+            _movementDirection.Value = _inputService.MoveDirection;
+            _rotationDirection.Value = _inputService.MoveDirection;
         }
 
         public override void Exit()

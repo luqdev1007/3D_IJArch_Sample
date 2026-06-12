@@ -58,7 +58,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MainHero
 
                 .AddCurrentTarget();
 
-            _brainsFactory.CreateMainHeroBrain(entity, new NearestDamageableTargetSelector(entity));
+            // _brainsFactory.CreateMainHeroBrain(entity, new NearestDamageableTargetSelector(entity));
 
             _entitiesLifeContext.Add(entity);
 

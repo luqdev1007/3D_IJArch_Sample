@@ -117,6 +117,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddMustCancelAttack(mustCancelAttack);
 
             entity
+                .AddSystem(new PlayerInputSystem(_container.Resolve<IInputService>()))
+
                 .AddSystem(new StatEffectsApplierSystem())
                 .AddSystem(new AttackPerSecondStatSynchronizerSystem())
                 .AddSystem(new AttackTimeByAttackSpeedStatSyncronizerSystem())
@@ -127,8 +129,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddSystem(new RigidbodyMovementSystem())
                 .AddSystem(new RigidbodyRotationSystem())
 
-                .AddSystem(new AttackCancelSystem())
                 .AddSystem(new StartAttackSystem())
+                .AddSystem(new AttackCancelSystem())
                 .AddSystem(new AttackProcessTimerSystem())
                 .AddSystem(new AttackDelayEndTriggerSystem())
                 .AddSystem(new DirectionsInstantShootSystem(this))

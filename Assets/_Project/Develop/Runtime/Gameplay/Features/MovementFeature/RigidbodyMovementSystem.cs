@@ -28,6 +28,8 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MovementFeature
 
         public void OnUpdate(float deltaTime)
         {
+            Debug.Log(_moveDirection.Value);
+
             if (_canMove.Evaluate() == false)
             {
                 _rigidbody.linearVelocity = Vector3.zero;

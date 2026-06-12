@@ -9,7 +9,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.InputFeature
 
         public bool IsEnabled { get; set; } = true;
 
-        public Vector3 Direction
+        public Vector3 MoveDirection
         {
             get
             {
