@@ -1152,6 +1152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3577606890974572641}
   - component: {fileID: 7269317391326506328}
+  - component: {fileID: 8344183644054601675}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -1209,6 +1210,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8344183644054601675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435156376068479466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e9cc3be27c72a4aa7600e75d04e787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7269317391326506328}
 --- !u!1 &3475089444624669874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,9 +2167,8 @@ GameObject:
   - component: {fileID: 3870953164274728222}
   - component: {fileID: 5983906064608142854}
   - component: {fileID: 6923111151770466808}
-  - component: {fileID: 469728292263800740}
-  - component: {fileID: 6854359865286507737}
-  - component: {fileID: 7334011874966703970}
+  - component: {fileID: 2613270704844856478}
+  - component: {fileID: 7603203780564779934}
   m_Layer: 0
   m_Name: MainHero
   m_TagString: Untagged
@@ -2228,7 +2241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350b1fd4f722f74cbf19965d54c22b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _body: {fileID: 6854359865286507737}
+  _body: {fileID: 0}
 --- !u!114 &6923111151770466808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,21 +2255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliders:
-  - {fileID: 6854359865286507737}
---- !u!114 &469728292263800740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6551060674322426251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2354a52f68bcd87468567267d18caac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &6854359865286507737
-CapsuleCollider:
+  - {fileID: 0}
+--- !u!143 &2613270704844856478
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2270,41 +2271,28 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
+  serializedVersion: 3
   m_Height: 1.8
-  m_Direction: 1
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!54 &7334011874966703970
-Rigidbody:
+--- !u!114 &7603203780564779934
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6551060674322426251}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972efaf366607347bcc200241583642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6563553901282209769
 GameObject:
   m_ObjectHideFlags: 0

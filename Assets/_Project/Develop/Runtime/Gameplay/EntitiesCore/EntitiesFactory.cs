@@ -4,6 +4,7 @@ using Assets._Project.Develop.Runtime.Gameplay.Features.ApplyDamage;
 using Assets._Project.Develop.Runtime.Gameplay.Features.Attack;
 using Assets._Project.Develop.Runtime.Gameplay.Features.Attack.Shoot;
 using Assets._Project.Develop.Runtime.Gameplay.Features.BounceFeature;
+using Assets._Project.Develop.Runtime.Gameplay.Features.Camera;
 using Assets._Project.Develop.Runtime.Gameplay.Features.ContactTakeDamage;
 using Assets._Project.Develop.Runtime.Gameplay.Features.InputFeature;
 using Assets._Project.Develop.Runtime.Gameplay.Features.LifeCycle;
@@ -117,7 +118,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddMustCancelAttack(mustCancelAttack);
 
             entity
-                .AddSystem(new PlayerInputSystem(_container.Resolve<IInputService>()))
+                .AddSystem(new PlayerInputSystem(_container.Resolve<IInputService>(), _container.Resolve<CameraService>()))
 
                 .AddSystem(new StatEffectsApplierSystem())
                 .AddSystem(new AttackPerSecondStatSynchronizerSystem())
@@ -126,8 +127,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.EntitiesCore
                 .AddSystem(new DamageStatSynchronizerSystem())
                 .AddSystem(new MaxHealthStatSynchronizerSystem())
 
-                .AddSystem(new RigidbodyMovementSystem())
-                .AddSystem(new RigidbodyRotationSystem())
+                .AddSystem(new CharacterControllerLocomotionSystem())
 
                 .AddSystem(new StartAttackSystem())
                 .AddSystem(new AttackCancelSystem())

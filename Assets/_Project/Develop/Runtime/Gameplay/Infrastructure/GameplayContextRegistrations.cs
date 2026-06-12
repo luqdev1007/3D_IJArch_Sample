@@ -23,6 +23,7 @@ using Assets._Project.Develop.Runtime.Gameplay.Features.PauseFeature;
 using Assets._Project.Develop.Runtime.Gameplay.Features.LootFeature;
 using Assets._Project.Develop.Runtime.Configs.Gameplay.Loot;
 using Assets._Project.Develop.Runtime.Gameplay.Features.Camera;
+using UnityEngine.InputSystem;
 
 namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 {
@@ -82,11 +83,19 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
             
             // camera
             container.RegisterAsSingle(CreateCameraService).NonLazy();
+            container.RegisterAsSingle(CreateLockOnService);
         }
+
+
 
         private static CameraService CreateCameraService(DIContainer c)
         {
-            return new CameraService(c.Resolve<MainHeroHolderService>(), c.Resolve<ResourcesAssetsLoader>());
+            return new CameraService(c.Resolve<MainHeroHolderService>(), c.Resolve<ResourcesAssetsLoader>(), c.Resolve<LockOnService>());
+        }
+
+        private static LockOnService CreateLockOnService(DIContainer c)
+        {
+            return new LockOnService();
         }
 
         private static LootPullingService CreateLootPullingService(DIContainer c)
@@ -221,9 +230,9 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
             return new MainHeroFactory(c);
         }
 
-        private static DesktopInput CreateDesktopInput(DIContainer c)
+        private static UnityInputService CreateDesktopInput(DIContainer c)
         {
-            return new DesktopInput();
+            return new UnityInputService(new PlayerInput());
         }
 
         private static AIBrainsContext CreateAIBrainsContext(DIContainer c)
