@@ -51,10 +51,7 @@ namespace Assets._Project.Develop.Runtime.UI.Gameplay
         public GameplayScreenPresenter CreateGameplayScreenPresenter(GameplayScreenView view)
         {
             return new GameplayScreenPresenter(
-                view, 
-                _container.Resolve<GameplayPresentersFactory>(),
-                _container.Resolve<MainHeroHolderService>(),
-                _container.Resolve<ProjectPresentersFactory>());
+                view);
         }
 
         public StagePresenter CreateStagePresenter(IconTextView view)

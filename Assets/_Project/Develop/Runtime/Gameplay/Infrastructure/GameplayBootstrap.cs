@@ -51,14 +51,9 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             _entitiesLifeContext = _container.Resolve<EntitiesLifeContext>();
             _brainsContext = _container.Resolve<AIBrainsContext>();
-
             _gameplayStatesContext = _container.Resolve<GameplayStatesContext>();
 
             _screenPresenter = _container.Resolve<GameplayScreenPresenter>();
-
-            _container.Resolve<MainHeroFactory>().Create(Vector3.zero);
-
-            _mainHeroHolderService = _container.Resolve<MainHeroHolderService>();
 
             yield break;
         }
@@ -67,14 +62,16 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
         {
             Debug.Log("Старт геймплейной сцены");
 
-            _gameplayStatesContext.Run();
+            // _gameplayStatesContext.Run();
         }
 
         private void Update()
         {
+            /*
             _brainsContext?.Update(Time.deltaTime);
             _entitiesLifeContext?.Update(Time.deltaTime);
             _gameplayStatesContext?.Update(Time.deltaTime);
+            */
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -82,16 +79,6 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
                 ICoroutinesPerformer coroutinesPerformer = _container.Resolve<ICoroutinesPerformer>();
                 coroutinesPerformer.StartPerform(sceneSwitcherService.ProcessSwitchTo(Scenes.MainMenu));
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _mainHeroHolderService.MainHero.Experience.Value += 1000;
-            }
-        }
-
-        private void LateUpdate()
-        {
-            _screenPresenter?.LateUpdate();
         }
     }
 }

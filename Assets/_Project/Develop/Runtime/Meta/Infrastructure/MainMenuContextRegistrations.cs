@@ -46,7 +46,7 @@ namespace Assets._Project.Develop.Runtime.Meta.Infrastructure
 
             MainMenuScreenView view = c
                 .Resolve<ViewsFactory>()
-                .Create<MainMenuScreenView>(ViewIDs.MainMenuScreen, uiRoot.HUDLayer);
+                .Create<MainMenuScreenView>(ViewIDs.MainMenuScreenView, uiRoot.HUDLayer);
 
             MainMenuScreenPresenter presenter = c
                 .Resolve<MainMenuPresentersFactory>()

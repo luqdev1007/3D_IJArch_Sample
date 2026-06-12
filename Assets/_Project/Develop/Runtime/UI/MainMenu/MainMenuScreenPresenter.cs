@@ -1,8 +1,9 @@
-﻿using Assets._Project.Develop.Runtime.UI.Core;
+﻿using Assets._Project.Develop.Runtime.Gameplay.Infrastructure;
+using Assets._Project.Develop.Runtime.UI.Core;
 using Assets._Project.Develop.Runtime.UI.Wallet;
-using System;
+using Assets._Project.Develop.Runtime.Utilities.CoroutinesManagment;
+using Assets._Project.Develop.Runtime.Utilities.SceneManagment;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets._Project.Develop.Runtime.UI.MainMenu
 {
@@ -12,24 +13,27 @@ namespace Assets._Project.Develop.Runtime.UI.MainMenu
 
         private readonly ProjectPresentersFactory _projectPresentersFactory;
 
-        private readonly MainMenuPopupService _popupService;
+        private readonly SceneSwitcherService _sceneSwitcherService;
+
+        private readonly ICoroutinesPerformer _coroutinesPerformer;
 
         private readonly List<IPresenter> _childPresenters = new();
 
         public MainMenuScreenPresenter(
             MainMenuScreenView screen,
             ProjectPresentersFactory projectPresentersFactory,
-            MainMenuPopupService popupService)
+            SceneSwitcherService sceneSwitcherService,
+            ICoroutinesPerformer coroutinesPerformer)
         {
             _screen = screen;
             _projectPresentersFactory = projectPresentersFactory;
-            _popupService = popupService;
+            _sceneSwitcherService = sceneSwitcherService;
+            _coroutinesPerformer = coroutinesPerformer;
         }
 
         public void Initialize()
         {
-            _screen.OpenLevelsMenuButtonClicked += OnOpenLevelsMenuButtonClicked;
-            _screen.OpenStatsUpgradeButtonClicked += OnOpenStatsUpgradeButtonClicked;
+            _screen.StartGameButtonClicked += OnStartGameButtonClicked;
 
             CreateWallet();
 
@@ -39,8 +43,7 @@ namespace Assets._Project.Develop.Runtime.UI.MainMenu
 
         public void Dispose()
         {
-            _screen.OpenLevelsMenuButtonClicked -= OnOpenLevelsMenuButtonClicked;
-            _screen.OpenStatsUpgradeButtonClicked -= OnOpenStatsUpgradeButtonClicked;
+            _screen.StartGameButtonClicked -= OnStartGameButtonClicked;
 
             foreach (IPresenter presenter in _childPresenters)
                 presenter.Dispose();
@@ -55,14 +58,9 @@ namespace Assets._Project.Develop.Runtime.UI.MainMenu
             _childPresenters.Add(walletPresenter);
         }
 
-        private void OnOpenLevelsMenuButtonClicked()
+        private void OnStartGameButtonClicked()
         {
-            _popupService.OpenLevelsMenuPopup();
-        }
-
-        private void OnOpenStatsUpgradeButtonClicked()
-        {
-            _popupService.OpenStatsUpgradePopup();
+            _coroutinesPerformer.StartPerform(_sceneSwitcherService.ProcessSwitchTo(Scenes.Gameplay, new GameplayInputArgs(1)));
         }
     }
 }

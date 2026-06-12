@@ -21,11 +21,13 @@ namespace Assets._Project.Develop.Runtime.Utilities.ConfigsManagment
         {
             {typeof(StartWalletConfig), "Configs/Meta/Wallet/StartWalletConfig" },
             {typeof(CurrencyIconsConfig), "Configs/Meta/Wallet/CurrencyIconsConfig" },
+
             {typeof(LevelsListConfig), "Configs/Gameplay/Levels/LevelsListConfig" },
+            {typeof(LootListConfig), "Configs/Gameplay/Loot/LootListConfig" },
+
             {typeof(HeroConfig), "Configs/Gameplay/Entities/Characters/HeroConfig" },
             {typeof(AbilitiesConfigsContainer), "Configs/Gameplay/Abilities/AbilitiesConfigsContainer" },
             {typeof(ExperienceForUpgradeLevelConfig), "Configs/Gameplay/ExperienceForUpgradeLevelConfig" },
-            {typeof(LootListConfig), "Configs/Gameplay/Loot/LootListConfig" },
             {typeof(PlayerStatsUpgradeConfig), "Configs/Meta/Stats/PlayerStatsUpgradeConfig" },
             {typeof(StatsViewConfig), "Configs/Meta/Stats/StatsViewConfig" },
         };

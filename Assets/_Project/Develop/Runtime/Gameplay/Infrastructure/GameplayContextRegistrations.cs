@@ -153,7 +153,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             GameplayScreenView view = c
                 .Resolve<ViewsFactory>()
-                .Create<GameplayScreenView>(ViewIDs.GameplayScreen, uiRoot.HUDLayer);
+                .Create<GameplayScreenView>(ViewIDs.GameplayScreenView, uiRoot.HUDLayer);
 
             GameplayScreenPresenter presenter = c
                 .Resolve<GameplayPresentersFactory>()
