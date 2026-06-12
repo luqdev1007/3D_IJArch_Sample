@@ -25,10 +25,11 @@ namespace Assets._Project.Develop.Runtime.Utilities.ConfigsManagment
             {typeof(LevelsListConfig), "Configs/Gameplay/Levels/LevelsListConfig" },
             {typeof(LootListConfig), "Configs/Gameplay/Loot/LootListConfig" },
 
-            {typeof(HeroConfig), "Configs/Gameplay/Entities/Characters/HeroConfig" },
+            {typeof(MainHeroConfig), "Configs/Gameplay/Entities/Characters/MainHeroConfig" },
+            {typeof(PlayerStatsUpgradeConfig), "Configs/Meta/Stats/PlayerStatsUpgradeConfig" },
+
             {typeof(AbilitiesConfigsContainer), "Configs/Gameplay/Abilities/AbilitiesConfigsContainer" },
             {typeof(ExperienceForUpgradeLevelConfig), "Configs/Gameplay/ExperienceForUpgradeLevelConfig" },
-            {typeof(PlayerStatsUpgradeConfig), "Configs/Meta/Stats/PlayerStatsUpgradeConfig" },
             {typeof(StatsViewConfig), "Configs/Meta/Stats/StatsViewConfig" },
         };
 

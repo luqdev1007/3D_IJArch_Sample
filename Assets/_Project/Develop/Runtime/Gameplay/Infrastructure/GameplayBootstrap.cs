@@ -47,13 +47,19 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
 
             Debug.Log("Инициализация геймплейной сцены");
 
+            // services
             _walletService = _container.Resolve<WalletService>();
 
+            // context
             _entitiesLifeContext = _container.Resolve<EntitiesLifeContext>();
             _brainsContext = _container.Resolve<AIBrainsContext>();
             _gameplayStatesContext = _container.Resolve<GameplayStatesContext>();
 
+            // UI
             _screenPresenter = _container.Resolve<GameplayScreenPresenter>();
+
+            // hero
+            _container.Resolve<MainHeroFactory>().Create(Vector3.zero);
 
             yield break;
         }

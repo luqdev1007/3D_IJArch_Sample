@@ -39,27 +39,25 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MainHero
 
         public Entity Create(Vector3 position)
         {
-            HeroConfig config = _configsProviderService.GetConfig<HeroConfig>();
+            MainHeroConfig config = _configsProviderService.GetConfig<MainHeroConfig>();
 
-            Entity entity = _entitiesFactory.CreateHero(position, config, GetStats());
+            Entity entity = _entitiesFactory.CreateMainHero(position, config, GetStats());
 
             entity
                 .AddIsMainHero()
-                .AddTeam(new ReactiveVariable<Teams>(Teams.MainHero));
+                .AddTeam(new ReactiveVariable<Teams>(Teams.MainHero))
 
-            entity
                 .AddAbilities()
-                .AddSystem(new AbilityOnAddActivatorSystem());
+                .AddSystem(new AbilityOnAddActivatorSystem())
 
-            entity
-                .AddCoins();
+                .AddCoins()
 
-            entity
                 .AddLevel(new ReactiveVariable<int>(1))
                 .AddExperience()
-                .AddSystem(new LevelUpSystem(_configsProviderService.GetConfig<ExperienceForUpgradeLevelConfig>()));
+                .AddSystem(new LevelUpSystem(_configsProviderService.GetConfig<ExperienceForUpgradeLevelConfig>()))
 
-            entity.AddCurrentTarget();
+                .AddCurrentTarget();
+
             _brainsFactory.CreateMainHeroBrain(entity, new NearestDamageableTargetSelector(entity));
 
             _entitiesLifeContext.Add(entity);
