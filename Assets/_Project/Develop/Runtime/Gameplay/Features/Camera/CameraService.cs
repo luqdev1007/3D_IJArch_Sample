@@ -105,7 +105,7 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.Camera
             if (_orbitalFollow == null)
                 return;
 
-            _orbitalFollow.TargetOffset = Vector3.up * 1.5f;
+            _orbitalFollow.TargetOffset = Vector3.up * 3;
             _orbitalFollow.Radius = _currentDist;
 
             _orbitalFollow.HorizontalAxis.Value = _yaw;
