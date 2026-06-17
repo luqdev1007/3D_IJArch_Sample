@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerInput",
     "maps": [
         {
@@ -31,29 +32,9 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "LockOn",
-                    "type": "Button",
-                    "id": "9ec6bbd4-0e18-4d3c-8687-437be2714114",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "a44600eb-c637-44fa-8b86-36b7d7b0fcd8",
-                    "path": "<Mouse>/scroll/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Zoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "WASD",
                     "id": "278c9d7a-fc47-4935-b779-088ac9166b9e",
@@ -122,12 +103,12 @@
                 },
                 {
                     "name": "",
-                    "id": "fcda7e5f-f800-46ff-bb86-43c169d5f707",
-                    "path": "<Mouse>/middleButton",
+                    "id": "4a60c39b-3cad-4750-bdc1-faa9b35e6cf7",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "",
-                    "action": "LockOn",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -118,29 +118,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""LockOn"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ec6bbd4-0e18-4d3c-8687-437be2714114"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a44600eb-c637-44fa-8b86-36b7d7b0fcd8"",
-                    ""path"": ""<Mouse>/scroll/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""278c9d7a-fc47-4935-b779-088ac9166b9e"",
@@ -209,12 +189,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fcda7e5f-f800-46ff-bb86-43c169d5f707"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""id"": ""4a60c39b-3cad-4750-bdc1-faa9b35e6cf7"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
                     ""groups"": """",
-                    ""action"": ""LockOn"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -228,7 +208,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Desktop_Move = m_Desktop.FindAction("Move", throwIfNotFound: true);
         m_Desktop_Look = m_Desktop.FindAction("Look", throwIfNotFound: true);
         m_Desktop_Zoom = m_Desktop.FindAction("Zoom", throwIfNotFound: true);
-        m_Desktop_LockOn = m_Desktop.FindAction("LockOn", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -312,7 +291,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Desktop_Move;
     private readonly InputAction m_Desktop_Look;
     private readonly InputAction m_Desktop_Zoom;
-    private readonly InputAction m_Desktop_LockOn;
     /// <summary>
     /// Provides access to input actions defined in input action map "Desktop".
     /// </summary>
@@ -336,10 +314,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Desktop/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_Desktop_Zoom;
-        /// <summary>
-        /// Provides access to the underlying input action "Desktop/LockOn".
-        /// </summary>
-        public InputAction @LockOn => m_Wrapper.m_Desktop_LockOn;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -375,9 +349,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
-            @LockOn.started += instance.OnLockOn;
-            @LockOn.performed += instance.OnLockOn;
-            @LockOn.canceled += instance.OnLockOn;
         }
 
         /// <summary>
@@ -398,9 +369,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
-            @LockOn.started -= instance.OnLockOn;
-            @LockOn.performed -= instance.OnLockOn;
-            @LockOn.canceled -= instance.OnLockOn;
         }
 
         /// <summary>
@@ -462,12 +430,5 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "LockOn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLockOn(InputAction.CallbackContext context);
     }
 }

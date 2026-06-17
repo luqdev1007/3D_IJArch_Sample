@@ -83,19 +83,13 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Infrastructure
             
             // camera
             container.RegisterAsSingle(CreateCameraService).NonLazy();
-            container.RegisterAsSingle(CreateLockOnService);
         }
-
-
 
         private static CameraService CreateCameraService(DIContainer c)
         {
-            return new CameraService(c.Resolve<MainHeroHolderService>(), c.Resolve<ResourcesAssetsLoader>(), c.Resolve<LockOnService>());
-        }
-
-        private static LockOnService CreateLockOnService(DIContainer c)
-        {
-            return new LockOnService();
+            return new CameraService(
+                c.Resolve<MainHeroHolderService>(), 
+                c.Resolve<ResourcesAssetsLoader>());
         }
 
         private static LootPullingService CreateLootPullingService(DIContainer c)

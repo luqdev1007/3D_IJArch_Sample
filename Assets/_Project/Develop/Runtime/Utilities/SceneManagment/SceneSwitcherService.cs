@@ -35,7 +35,7 @@ namespace Assets._Project.Develop.Runtime.Utilities.SceneManagment
             yield return _sceneLoaderService.LoadAsync(Scenes.Empty);
             yield return _sceneLoaderService.LoadAsync(sceneName);
 
-            SceneBootstrap sceneBootstrap = Object.FindObjectOfType<SceneBootstrap>();
+            SceneBootstrap sceneBootstrap = Object.FindAnyObjectByType<SceneBootstrap>();
 
             if (sceneBootstrap == null)
                 throw new NullReferenceException(nameof(sceneBootstrap) + " not found");
